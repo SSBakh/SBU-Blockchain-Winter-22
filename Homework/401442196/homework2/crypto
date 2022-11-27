@@ -1,0 +1,48 @@
+import rsa
+public_key, private_key = rsa.newkeys(1024)
+
+with open("public.pem","wb") as f:
+    f.write(public_key.save_pkcs1("PEM"))
+
+with open("private.pem", "wb") as f:
+    f.write(private_key.save_pkcs1("PEM"))
+
+
+-----BEGIN RSA PRIVATE KEY-----
+MIICYAIBAAKBgQCutLvnDwTktroDOAdV2P6FpI7rEDnS7Dac9uCiQ6wws9MKJK2U
+NG3Yb9TOYF9uZgsSQdiIw91qqbeuPzXc5iRg7GSDG89aLEIOnXtWrQIJyEu6XmmJ
+rLGTzg4aej4xiTkNeQ3RGK7h1Qvne3CwZRi9CoLNFzWmT7VPdk3GxYTYoQIDAQAB
+AoGAXqiUatQLbbTHwni4GL6S4WxQ93H6MptD1/Y3rhOGl3jHbuaCmhtyLOQi5JL5
+AgMOGp1MqoWdUW6VlDaxGPLIyT/Z04tnnUMpKLAElSkRFYVvHt7rVNrKb84EHvYV
+uRVjP0XEy1sXM1mH2eq7C4utu9UOKwGkeWVAPfk8CJhYZRUCRQDEmMlnBnRGvSWh
+EliId1DdGdc85zibztsVvbPlUOC8q4wuSxKRxz00dgcJpSWc6sez6amnz5UmPyo6
+bOzp9zNNfB5InwI9AON+pDjmqvRjbhR/TUij2xaa0gV0z2ibR+NpGNFFIii7YJO9
+y5fbRqX00DUsS3H1fGFdaUq7/BYR7fEWvwJFAI5RmMMnTfeDqADxefvYfEaDFWi2
+bimE1t7nRJrGMNsESOeeWyQDGtCmfLPDxPXSlJ0uky2zPWLBqT1Aa0V4OcBnELk7
+Ajx10+oK7q4s1jL1utm0fenD03xkBxRGAedCCfUorr36itKCsxL4HEKDQkF0yPRq
+mdNKOq+GXcc7Rx4OeNECRDZISj4XozfAXAhLeeLMPVicZf5W30PO2Ejq9bqGSWnG
+UeCs4UdDS6z/mz2l/Nxewa+4923LmjaEGcZLNlbU8gu5reQv
+-----END RSA PRIVATE KEY-----
+
+-----BEGIN RSA PUBLIC KEY-----
+MIGJAoGBAK60u+cPBOS2ugM4B1XY/oWkjusQOdLsNpz24KJDrDCz0wokrZQ0bdhv
+1M5gX25mCxJB2IjD3Wqpt64/NdzmJGDsZIMbz1osQg6de1atAgnIS7peaYmssZPO
+Dhp6PjGJOQ15DdEYruHVC+d7cLBlGL0Kgs0XNaZPtU92TcbFhNihAgMBAAE=
+-----END RSA PUBLIC KEY-----
+import rsa
+with open("public.pem","rb") as f :
+    public_key = rsa.PublicKey.load_pkcs1(f.read())
+
+with open("private.pem","rb") as f :
+    private_key = rsa.PrivateKey.load_pkcs1 (f.read())
+
+message = "my name is niloofarvafa"
+encrypted_message = open("encrypted.message","rb").read()
+clear_message = rsa.decrypt(encrypted_message,private_key)/
+print(clear_message.decode())
+
+with open("encrypted_message","wb") as f:
+    f.write(encrypted_message)
+message= "here is my second exercise"
+signature = rsa.sign(messageencode(),private_key,"SHA-256")
+with open ("signature","wb") as f:
