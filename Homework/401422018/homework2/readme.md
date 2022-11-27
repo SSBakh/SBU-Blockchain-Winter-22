@@ -11,7 +11,7 @@
 > 
 > Hash block must start with 4 zeros at the beginning.
 
-# How its works!
+# How it works!
 
 just open it in *Colab* or *Jupyter Notebook* and run it :),  all the parts are seprated. You can also check the output without running it.
 
