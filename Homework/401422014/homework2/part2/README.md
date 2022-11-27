@@ -1,7 +1,7 @@
 
-# HomeWork 1
+# HomeWork 2
 
-Run **first_exercise.py** to see outputs.
+Run **second_exercise.py** to see outputs.
 
 
 ## Run Locally
@@ -9,13 +9,13 @@ Run **first_exercise.py** to see outputs.
 change directory to project path
 
 ```bash
-  cd C://path-to-project
+  cd C:\path-to-project
 ```
 
-Run first_exercise.py script
+Run second_exercise.py script
 
 ```bash
-  python first_exercise.py
+  python second_exercise.py
 ```
 
 
