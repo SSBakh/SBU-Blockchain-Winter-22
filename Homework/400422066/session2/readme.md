@@ -45,7 +45,7 @@ example output:
 
 
 # Note
-The requirements.txt file should list all Python libraries that this notebooks depend on, and they will be installed using:  
+The requirements.txt file should list all Python libraries that these notebooks depend on, and they will be installed using:  
 ```
 pip install -r requirements.txt
 ```
