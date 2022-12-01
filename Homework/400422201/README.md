@@ -32,7 +32,7 @@ print(privKeyPEM.decode('ascii'))
 ```
 
 *B - Signing a message with a private key*
-We shall use the pycryptodome package in Python to generate RSA keys. After the keys are generated, we shall compute RSA digital signatures and verify signatures by a simple modular exponentiation (by encrypting and decrypting the message hash).
+Using the RSA private key {n, d}. Calculate its hash and raise the hash to the power d modulo n (encrypt the hash by the private key). I shall use SHA-512 hash. It will fit in the current RSA key size (1024). Have modular exponentiation as built in function pow(x, y, n):
 ```python
 # Import sha256 from hashlib
 from hashlib import sha256
@@ -45,10 +45,7 @@ hash = int.from_bytes(sha256(msg).digest(), byteorder='big')
 signature = pow(hash, keyPair.d, keyPair.n)
 print("Signature:", hex(signature))
 ```
-
-
-
-```
+*C - Signing a message with a public key and verify*
 
 
 
