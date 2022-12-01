@@ -32,6 +32,23 @@ print(privKeyPEM.decode('ascii'))
 ```
 
 *B - Signing a message with a private key*
+We shall use the pycryptodome package in Python to generate RSA keys. After the keys are generated, we shall compute RSA digital signatures and verify signatures by a simple modular exponentiation (by encrypting and decrypting the message hash).
+```python
+# Import sha256 from hashlib
+from hashlib import sha256
+
+# Define the message (As b)
+msg = b'Aysan NazarMohammadi'
+
+# Using the RSA private key {n, d} and Sign message 
+hash = int.from_bytes(sha256(msg).digest(), byteorder='big')
+signature = pow(hash, keyPair.d, keyPair.n)
+print("Signature:", hex(signature))
+```
+
+
+
+```
 
 
 
