@@ -9,8 +9,8 @@ I use the pycryptodome library to create RSA key pairs:
 pip install pycryptodome
 ```
 Also I need other calls:
-As I are using the RSA algorithm, we need to import it from Crypto.PublicKey.
-I are also using the OAEP-Padding scheme. We have imported PKCS1_OAEP from Crypto.cipher.
+As I am using the RSA algorithm, we need to import it from Crypto.PublicKey.
+I am also using the OAEP-Padding scheme. We have imported PKCS1_OAEP from Crypto.cipher.
 To convert binary to ASCII, I have imported binascii.
 ```python
 from Crypto.PublicKey import RSA 
