@@ -58,5 +58,27 @@ print("Signature valid:", hash == hashFromSignature) # Comparing obtained hash f
 
 ***Mining a block***
 
+Start by simply enumerating an integer through our sha256 hash function until I find a hash with 4 leading zeros.
+
+Use a while loop, passing the variable “y” through my hashing function each time the loop runs. I then inspect the first 4 digits [:4] of my hash value. If the first four digits equal 0000 then I exit the loop by setting the found variable to 1
+
+```python
+import hashlib 
+
+y = 1
+found = 0
+string = 'this'
+while found == 0:
+  hashed == hashlib.sha256(string.encode('utf-8')).hexdigest()
+  if hashed[:4] == '0000':
+    found =1
+  y +=1
+print(hashed)
+Print(y)
+```
+
+
+
+
 
 
