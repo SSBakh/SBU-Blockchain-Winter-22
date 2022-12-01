@@ -55,6 +55,7 @@ hashFromSignature = pow(signature, keyPair.e, keyPair.n)  # Raise the signature 
 print("Signature valid:", hash == hashFromSignature) # Comparing obtained hash from the signature to the hash of the originally signed message
 ```
 ***2***
+
 ***Mining a block***
 
 
