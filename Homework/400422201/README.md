@@ -54,7 +54,8 @@ hash = int.from_bytes(sha256(msg).digest(), byteorder='big')
 hashFromSignature = pow(signature, keyPair.e, keyPair.n)  # Raise the signature to power e modulo n
 print("Signature valid:", hash == hashFromSignature) # Comparing obtained hash from the signature to the hash of the originally signed message
 ```
-
+***2***
+***Mining a block***
 
 
 
