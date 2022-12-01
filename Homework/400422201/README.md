@@ -4,20 +4,20 @@ Link of first part in my Google Colab (https://colab.research.google.com/drive/1
 
 *1/A - RSA keypair*
 
-We use the pycryptodome library to create RSA key pairs:
+I use the pycryptodome library to create RSA key pairs:
 ```python
 pip install pycryptodome
 ```
-Also we need other calls:
-As we are using the RSA algorithm, we need to import it from Crypto.PublicKey.
-We are also using the OAEP-Padding scheme. We have imported PKCS1_OAEP from Crypto.cipher.
-To convert binary to ASCII, we have imported binascii.
+Also I need other calls:
+As I are using the RSA algorithm, we need to import it from Crypto.PublicKey.
+I are also using the OAEP-Padding scheme. We have imported PKCS1_OAEP from Crypto.cipher.
+To convert binary to ASCII, I have imported binascii.
 ```python
 from Crypto.PublicKey import RSA 
 from Crypto.Cipher import PKCS1_OAEP 
 import binascii 
 ```
-Then we create keypair values using RSA.generate in this way:
+Then I create keypair values using RSA.generate in this way:
 ```python
 keyPair = RSA.generate(3072)
 # Generating publickey value
