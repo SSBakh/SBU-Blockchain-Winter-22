@@ -46,8 +46,14 @@ signature = pow(hash, keyPair.d, keyPair.n)
 print("Signature:", hex(signature))
 ```
 *C - Signing a message with a public key and verify*
-
-
+Verify the signature, by decrypting the signature using the public key (raise the signature to power e modulo n) and comparing the obtained hash from the signature to the hash of the originally signed message:
+```python
+# RSA verify signature
+msg = b'Aysan NazarMohammadi'
+hash = int.from_bytes(sha256(msg).digest(), byteorder='big')
+hashFromSignature = pow(signature, keyPair.e, keyPair.n)  # Raise the signature to power e modulo n
+print("Signature valid:", hash == hashFromSignature) # Comparing obtained hash from the signature to the hash of the originally signed message
+```
 
 
 
