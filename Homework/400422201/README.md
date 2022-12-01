@@ -58,6 +58,8 @@ print("Signature valid:", hash == hashFromSignature) # Comparing obtained hash f
 
 ***Mining a block***
 
+Link of second part in my Google Colab (https://colab.research.google.com/drive/1SMWw44qmveQPjMzXFPxq3DoAIGlFLbzR?usp=sharing)
+
 Start by simply enumerating an integer through our sha256 hash function until I find a hash with 4 leading zeros.
 
 Use a while loop, passing the variable “y” through my hashing function each time the loop runs. I then inspect the first 4 digits [:4] of my hash value. If the first four digits equal 0000 then I exit the loop by setting the found variable to 1
@@ -75,6 +77,29 @@ while found == 0:
   y +=1
 print(hashed)
 Print(y)
+```
+ Now combining the block number, nonce, data, and previous hash of my simulated block and passing it through my encryption function.  
+
+the only value I change per iteration is the Nonce. I keep passing my block through the hashing function until I find the Nonce that gives me a hash below the target.
+```python
+# Simulation of mining a block
+
+block = 123
+NONCE = 0
+data = 'Johh = $100'
+previousHash = hh
+
+# Combining the block number, nonce, data and previous hash of simulated block 
+# Passing it through my encryption function
+found = 0 
+while found == 0:
+  z = str(block)+str(NONCE)+data+previousHash
+  newHash = hashlib.sha256(z.encode()).hexdigest()
+  if newHash[:4] == '0000':
+    found = 1
+  NONCE +=1
+print(newHash)
+print(NONCE)
 ```
 
 
