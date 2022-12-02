@@ -1,0 +1,4 @@
+cffi==1.15.1
+pyasn1==0.4.8
+pycparser==2.21
+rsa==4.9
