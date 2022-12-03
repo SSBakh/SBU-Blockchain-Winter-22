@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    },
+    "kernelspec": {
+      "name": "python",
+      "display_name": "Python (Pyodide)",
+      "language": "python"
+    }
+  },
+  "nbformat_minor": 4,
+  "nbformat": 4,
+  "cells": [
+    {
+      "cell_type": "code",
+      "source": "# Import hash library\nimport hashlib",
+      "metadata": {
+        "trusted": true
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "# Define crypto class with one method\nclass Block:\n    # Method for mine a block\n    # Get a block and date and previous hash(can be None - for future features)\n    # Return correct nonce and hash\n    def mine(self, block, data, previous_hash=None):\n        # Initialize nonce\n        nonce = 0\n        # look for correct nonce with greedy algorithm\n        while True:\n            # create a string from data to be hashed\n            hashingData = str(block) + str(nonce) + data\n            if previous_hash is not None:\n                hashingData += previous_hash\n            # hash data using sha256 algorithm and get the hex of hashed value\n            hash = hashlib.sha256(hashingData.encode()).hexdigest()\n            # check if hash hexadecimal value starts with 4 zeros\n            if hash[:4] == '0000':\n                # nonce is correct, and we will return the nonce and the hash\n                return {\"hash\": hash, \"nonce\": nonce}\n            nonce += 1",
+      "metadata": {
+        "trusted": true
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}{
+  "metadata": {
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    },
+    "kernelspec": {
+      "name": "python",
+      "display_name": "Python (Pyodide)",
+      "language": "python"
+    }
+  },
+  "nbformat_minor": 4,
+  "nbformat": 4,
+  "cells": [
+    {
+      "cell_type": "code",
+      "source": "# Import library\n# Import serialization and rsa and padding and hashes, invalid signature exception from cryptography library\nimport rsa\nfrom cryptography.hazmat.primitives import serialization\nfrom cryptography.hazmat.primitives.asymmetric import rsa\nfrom cryptography.hazmat.primitives.asymmetric import padding\nfrom cryptography.hazmat.primitives import hashes\nfrom cryptography.exceptions import InvalidSignature",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "# Define crypto class with three methods\nclass Crypto:\n    # Method for generate RSA key pair\n    def generateRsaKeys(self):\n        # Generate private key\n        private_key = rsa.generate_private_key(65537, 2048)\n        # Serialize the private key\n        private_pem = private_key.private_bytes(\n            encoding=serialization.Encoding.PEM,\n            format=serialization.PrivateFormat.PKCS8,\n            encryption_algorithm=serialization.NoEncryption()\n        )\n        # Convert to PEM format and create private_key.pem file on your current working directory\n        with open('private_key.pem', 'wb') as f:\n            f.write(private_pem)\n        # Serialize public key\n        public_pem = private_key.public_key().public_bytes(\n            encoding=serialization.Encoding.PEM,\n            format=serialization.PublicFormat.SubjectPublicKeyInfo,\n        )\n        # Convert to PEM format and create public_key.pem file on your current working directory\n        with open('public_key.pem', 'wb') as f:\n            f.write(public_pem)\n\n    # Method for signing a message\n    # Get a private key object and a message, return a hexadecimal signature\n    def signing(self, private_key, message):\n        if isinstance(private_key, str):\n            # Crate a private key object from file\n            with open(private_key, 'rb') as f:\n                private_key = serialization.load_pem_private_key(f.read(), password=None)\n        # Sign a message with the private key\n        signature = private_key.sign(\n            # Convert message to byte\n            message.encode(),\n            padding.PSS(\n                mgf=padding.MGF1(hashes.SHA256()),\n                salt_length=padding.PSS.MAX_LENGTH\n            ),\n            hashes.SHA256()\n        )\n\n        return signature.hex()\n\n    # Method to verify a signature with a public key and a message\n    # Get message and public key and signature\n    # prints out the result whether the signature is valid or invalid.\n    def verify(self, message, public_key, signature):\n        # Crate a public key object from file\n        if isinstance(public_key, str):\n            with open(public_key, 'rb') as f:\n                public_key = serialization.load_pem_public_key(f.read())\n        try:\n            # try to verify signature\n            public_key.verify(\n                # Convert signature and message to byte\n                bytes.fromhex(signature),\n                message.encode(),\n                padding.PSS(\n                    mgf=padding.MGF1(hashes.SHA256()),\n                    salt_length=padding.PSS.MAX_LENGTH\n                ),\n                hashes.SHA256()\n            )\n            print(\"Signature is valid\")\n        # InvalidSignature exceptions will raise if verify method can not verify the signature\n        except InvalidSignature:\n            print(\"Signature is invalid\")",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}{
+  "metadata": {
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    },
+    "kernelspec": {
+      "name": "python",
+      "display_name": "Python (Pyodide)",
+      "language": "python"
+    }
+  },
+  "nbformat_minor": 4,
+  "nbformat": 4,
+  "cells": [
+    {
+      "cell_type": "code",
+      "source": "# Import Block and Crypto Classes\nimport Block\nimport Crypto\n\n# While loop for a menu\n# If you enter 1 generate RSA key pair\n# If you enter 2 Sign a text with private key\n# If you enter 3 Verify message and signature\n# If you enter 4 Mine single block\n# If you enter 0 exit\nwhile True:\n    inp = int(input(\"\"\"    1. Generate RSA key pair\n    2. Sign a text with private key\n    3. Verify message and signature\n    4. Mine single block\n    0. exit \"\"\"))\n    if inp == 1:\n        Crypto.Crypto().generateRsaKeys()\n    if inp == 2:\n        private_key = input('Enter your private key file name: ')\n        message = input('Enter your message: ')\n        print(Crypto.Crypto().signing(private_key, message))\n    if inp == 3:\n        public_key = input('Enter your public key file name: ')\n        message = input('Enter your message: ')\n        signature = input('Enter your signature: ')\n        Crypto.Crypto().verify(message, public_key, signature)\n    if inp == 4:\n        block = input(\"Enter block number: \")\n        data = input(\"Enter data: \")\n        mined = Block.Block().mine(block, data)\n        print(f\"Nonce is: {mined['nonce']}\\nHash is {mined['hash']}\")\n    if inp == 0:\n        break",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
