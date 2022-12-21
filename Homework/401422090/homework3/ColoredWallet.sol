@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-contract TestContract {
+contract ColoredCoins {
 
     struct ColoredWallet {
         uint256 numberOfRedCoins;
@@ -46,7 +46,7 @@ contract TestContract {
     }
 
 
-    function transfer(uint256 amount, address destination) public  hasDestinationClaimed(destination)  sourceAndDestinationAreNotSame(destination)  {
+    function transfer(uint256 amount, address destination) public  hasEnoughBlueCoin(amount) hasDestinationClaimed(destination)  sourceAndDestinationAreNotSame(destination)  {
         ColoredWallet memory sourceColoredWallet =  coloredWalletMapping[msg.sender];
         ColoredWallet memory destinationColoredWallet =  coloredWalletMapping[msg.sender];
 

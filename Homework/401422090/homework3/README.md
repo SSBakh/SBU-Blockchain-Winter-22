@@ -25,9 +25,12 @@ View function declares that no state will be changed.Pure function declares that
 ### Smart contract code
 [Smart contract code](https://github.com/mohammadranjbarz/SBU-Blockchain-Winter-22/blob/401422090/Homework/401422090/homework3/ColoredWallet.sol)
 
-[Smart contract creation tx](Etherscan tx link)
+[Smart contract creation tx](https://goerli.etherscan.io/tx/0x7f7c358d8557c46d8f5867a9b3e8aa2673d8be119f56990a537c69a86694b710)
 
-[Smart contract address](Smart contract address)
+[Smart contract address](https://goerli.etherscan.io/address/0x56bf525a28571ed57a609272b68f367f6ea9ce67)
+
+[Smart contract code and ABI in ether scan](https://goerli.etherscan.io/address/0x56bf525a28571ed57a609272b68f367f6ea9ce67#code)
+
 
 
 
