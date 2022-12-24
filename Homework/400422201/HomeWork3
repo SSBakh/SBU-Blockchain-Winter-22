@@ -1,4 +1,4 @@
-Homework 3 - Par 1
+Homework 3 - Part 1
 
 - what is pure functions?
 A function that doesn’t read or modify the variables of the state and can only use local variables that are declared in the function and the arguments that are passed to the function to compute or return a value is a pure function. 
@@ -12,3 +12,22 @@ Also, pure tells that not only does the function not save any data to the blockc
 View function can view the state variable but can't modify it. Pure function declares that no state variable will be changed or read. (view can't modify state but can look it up.)
 
 - An example of a pure function:
+```Solidity
+pragma solidity ^0.5.0;
+  
+// Defining a contract
+contract Test {
+  
+    // Defining pure function to 
+    // calculate product and sum
+   // of 2 numbers
+   function getResult(
+   ) public pure returns(
+     uint product, uint sum){
+      uint num1 = 2; 
+      uint num2 = 4;
+      product = num1 * num2;
+      sum = num1 + num2; 
+   }
+}
+```
