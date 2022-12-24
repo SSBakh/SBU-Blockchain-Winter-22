@@ -12,8 +12,10 @@ Also, pure tells that not only does the function not save any data to the blockc
 View function can view the state variable but can't modify it. Pure function declares that no state variable will be changed or read. (view can't modify state but can look it up.)
 
 - An example of a pure function:
-```Solidity
-pragma solidity ^0.5.0;
+```solidity
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
   
 // Defining a contract
 contract Test {
