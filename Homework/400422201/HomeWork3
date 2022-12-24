@@ -1,4 +1,4 @@
-***Homework 3 - Par 1***
+**Homework 3 - Par 1**
 
 - what is pure functions?
 A function that doesn’t read or modify the variables of the state and can only use local variables that are declared in the function and the arguments that are passed to the function to compute or return a value is a pure function. 
