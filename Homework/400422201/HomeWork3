@@ -1,4 +1,4 @@
-**Homework 3 - Par 1**
+Homework 3 - Par 1
 
 - what is pure functions?
 A function that doesn’t read or modify the variables of the state and can only use local variables that are declared in the function and the arguments that are passed to the function to compute or return a value is a pure function. 
@@ -6,3 +6,9 @@ A function that doesn’t read or modify the variables of the state and can only
 - When can we define a pure function?
 When we want a function to always return the same result for the same argument values and not have any side effects such as changing an argument (or global variable) or outputting anything. And the only result of calling that function is the return value.
 
+- What is the difference between view and pure?
+Pure function declares that no state variable will be changed or read. But view tells that by running the function, no data will be saved/changed.
+Also, pure tells that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain.
+View function can view the state variable but can't modify it. Pure function declares that no state variable will be changed or read. (view can't modify state but can look it up.)
+
+- An example of a pure function:
