@@ -3,3 +3,6 @@ Homework 3 - Par 1
 - what is pure functions?
 A function that doesn’t read or modify the variables of the state and can only use local variables that are declared in the function and the arguments that are passed to the function to compute or return a value is a pure function. 
 
+- When can we define a pure function?
+When we want a function to always return the same result for the same argument values and not have any side effects such as changing an argument (or global variable) or outputting anything. And the only result of calling that function is the return value.
+
