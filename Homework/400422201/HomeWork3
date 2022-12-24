@@ -15,7 +15,7 @@ View function can view the state variable but can't modify it. Pure function dec
 ```sol
 
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.17;
   
 // Defining a contract
 contract Test {
