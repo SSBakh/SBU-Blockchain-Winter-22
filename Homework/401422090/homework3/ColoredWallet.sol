@@ -48,7 +48,7 @@ contract ColoredCoins {
 
     function transfer(uint256 amount, address destination) public  hasEnoughBlueCoin(amount) hasDestinationClaimed(destination)  sourceAndDestinationAreNotSame(destination)  {
         ColoredWallet memory sourceColoredWallet =  coloredWalletMapping[msg.sender];
-        ColoredWallet memory destinationColoredWallet =  coloredWalletMapping[msg.sender];
+        ColoredWallet memory destinationColoredWallet =  coloredWalletMapping[destination];
 
         sourceColoredWallet.numberOfBlueCoins = sourceColoredWallet.numberOfBlueCoins- amount;
         coloredWalletMapping[msg.sender] = sourceColoredWallet;
