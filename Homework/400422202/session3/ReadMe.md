@@ -39,3 +39,6 @@ Design a smart contract
         - amount of blue coin (the wallet should have sufficient blue coin) 
         - destination address. (the address should exist)
        
+
+This is link of smart contract on goerli test net : 
+https://goerli.etherscan.io/tx/0x5b8c42f43b6c691ece52ea8b61afb6c16b9696a83c419c2e5597302da6a18994
