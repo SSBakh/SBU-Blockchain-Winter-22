@@ -30,6 +30,10 @@ modifier and require are ideally the same, one could declare a modifier and appe
 
 Basic Wallet using modifier : `ColoredWallet_modifier.sol`. 
 
+View on etherscan : [Smart Contract](https://goerli.etherscan.io/tx/0x344a4b3f50c314a8766adb71ec03c588f6fd91133588cc8e085008b7ca45e9c0)
  
   
-More information : [Solidity by Example](https://solidity-by-example.org/)
+More information : [Solidity by Example](https://solidity-by-example.org/). 
+
+
+
