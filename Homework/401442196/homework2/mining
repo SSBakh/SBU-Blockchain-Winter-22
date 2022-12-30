@@ -1,0 +1,24 @@
+from hashlib import sha256
+sha256("ABC".encode("ascii")).hexdigest()
+def SHA256(text):
+  return sha256(text.encode("ascii")).hexdigest()
+MAX_NONCE=10000000
+def mine(block_number,transaction,previous_hash,prefix_zeros):
+  prefix_str='0'*prefix_zeros
+  for nonce in range(MAX_NONCE):
+    text= str(block_number) + transaction + previous_hash + str(nonce)
+    hash = SHA256(text)
+    # print(hash)
+    if hash.startswith(prefix_str):
+      print("Bitcoin mined with nonce value :",nonce)
+      return hash
+  print("Could not find a hash in the given range of upto", MAX_NONCE)
+if _name_ == "_main_":
+  transactions = '''
+  A->B->20
+  B->c->60
+  '''
+  difficulty = 4
+  import time as t
+  begin = t.time()
+  new_hash = mine(684260, transactions, "000018b023641a9ff1dbc2c292e99bd2827b4b7074dbb3a57553ab720e685d1c", difficulty)
