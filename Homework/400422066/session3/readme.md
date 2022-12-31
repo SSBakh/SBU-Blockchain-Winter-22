@@ -5,6 +5,9 @@
 Getter functions can be declared view or pure.  
 View function declares that no state will be changed.  
 Pure function declares that no state variable will be changed or read.  
+Pure and view functions still cost gas if they are called internally from another function. They are only free if they are called externally, from outside of the blockchain.In this type of case, there won't be any transaction initiated because this will be like just querying the blockchain for its current state and nothing will be changed.
+
+
 
 Example `Pure_View.sol` 
 
