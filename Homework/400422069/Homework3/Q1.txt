@@ -1,0 +1,40 @@
+
+- What are pure functions?
+
+Pure function doesn't read or modify the state variables.
+It can only use local variables that are declared in the function, 
+and the arguments that are passed to the function to compute or return a value.
+
+
+- When can we declare a pure function?
+When we only want to do some computational that doesn't change the state and use any external data to obtain the return value.
+pure fubction always returns the same result if the same arguments are passed. It does not depend on any state or data change during a program's execution, 
+
+They can use the revert() and require() functions to revert potential state changes if an error occurs.
+
+- Difference between a pure and a view function?
+View functions are read only functions and do not modify the state of the block chain. 
+In other words if you want to read data from the block chain one can use view.
+
+Pure function declares that no state variable will be changed or read. 
+view tells us that by running the function, no data will be saved/changed.
+pure tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain.
+
+
+- Example of a pure function.
+
+contract pureSample {
+   function getResult() public pure returns(uint sum){
+      uint a = 5; 
+      uint b = 7;
+      sum = a + b; 
+   }
+}
+
+
+- What are function modifiers?
+
+Function modifier can be used to automatically check the condition prior to executing the function.
+Function modifier can be executed before or after the function executes its code.
+The modifiers can be used when there is a need to verify the condition automatically before executing a particular function.
+If the given condition is not satisfied, then the function will not get executed.
