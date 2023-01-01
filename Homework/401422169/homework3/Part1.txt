@@ -1,0 +1,56 @@
+What are pure functions?
+	A function that doesn’t read or modify the variables of the state
+	is called a pure function.
+
+When we can use them?
+	We can declare a pure function when we want to use local variables that are declared
+	in the function and the arguments that are passed to the function to compute or return a value.
+
+What is difference between pure and view functions?
+	View functions are read only function and do not modify the state of the block chain (view data on the block chain).
+	pure functions do not read and do not modify state of the block chain. All the data the pure function is concerned
+	with is either passed in or defined in the functions scope.
+
+Example of pure function:
+	pragma solidity ^0.8.0;
+
+	contract pureSample {
+
+   		function sumOfTwoNumbers() public pure returns(uint sum){
+      		uint a = 20; 
+      		uint b = 30;
+      		sum = a + b; 
+   		}
+	}
+
+Simple diagram for pure functions:
+
+	Arguments passed/Use local variables -> Pure functions -> Output
+
+NOTE1:
+	If the pure function is doing any of the following,
+	the compiler will consider them as reading state
+	variables and will throw a warning:
+
+		1.Reading state variables
+		2.Accessing balance or address
+		3.Invoking a function that is not pure
+		4.Accessing a global variable, message, or block
+		5.Using certain opcodes in inline assembly
+
+NOTE2:
+	If the pure function is doing any of the following,
+	the compiler will consider them as modifying state
+	variables and will throw a warning:
+
+		1.Modifying or over-writing state variables
+		2.Creating new contracts
+		3.Invoking a function that is not pure or view
+		4.Emitting events
+		5.Using certain opcodes in inline assembly
+		6.Using selfdestruct
+		7.Using low-level function calls
+		8.Sending Ether along with function calls
+
+NOTE3:
+	Pure functions are allowed to use the revert() and require() functions.
