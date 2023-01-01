@@ -1,0 +1,121 @@
+Homework 3 - Part 1
+
+- what is pure functions?
+A function that doesn’t read or modify the variables of the state and can only use local variables that are declared in the function and the arguments that are passed to the function to compute or return a value is a pure function. 
+
+- When can we define a pure function?
+When we want a function to always return the same result for the same argument values and not have any side effects such as changing an argument (or global variable) or outputting anything. And the only result of calling that function is the return value.
+
+- What is the difference between view and pure?
+Pure function declares that no state variable will be changed or read. But view tells that by running the function, no data will be saved/changed.
+Also, pure tells that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain.
+View function can view the state variable but can't modify it. Pure function declares that no state variable will be changed or read. (view can't modify state but can look it up.)
+
+- An example of a pure function:
+```sol
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+  
+// Defining a contract
+contract Test {
+  
+    // Defining pure function to 
+    // calculate product and sum
+   // of 2 numbers
+   function getResult(
+   ) public pure returns(
+     uint product, uint sum){
+      uint num1 = 2; 
+      uint num2 = 4;
+      product = num1 * num2;
+      sum = num1 + num2; 
+   }
+}
+```
+
+
+Homework 3 - Part 2 - A
+
+- Design a struct that contains 2 values.
+```sol
+
+contract coin {
+    struct ColoredWallet {
+    uint256 numberOfRedCoins;
+    uint256 numberOfBlueCoins;
+}
+```
+
+Homework 3 - Part 2 - B
+
+- Create a function to create your own ColoredWallet.
+```sol
+
+ColoredWallet public coin1;
+
+function setCoin1() public {
+    coin1.numberOfRedCoins = 0;
+    coin1.numberOfBlueCoins = 100;
+}
+```
+
+Homework 3 - Part 2 - C
+- Define a function that the user can burn one of the blue coins and get red coin.
+
+```sol
+function transfer(address recipient, uint256 numberOfRedCoins) public {
+        require(sender != address(0), "ERC20: transfer from the zero address");
+
+function burn(address account, uint256 numberOfBlueCoins, uint256 numberOfRedCoins) internal {
+        require(account != address(0), "ERC20: burn from the zero address");
+
+        uint256 accountBalance = _balances[account];
+        require(accountBalance >= numberOfBlueCoins, "ERC20: burn amount exceeds balance");
+        unchecked {
+            _balances[account] = accountBalance - numberOfBlueCoins;
+        }
+        _totalSupply -= numberOfRedCoins;
+
+        emit Transfer(account, address(0), numberOfRedCoins);
+    }
+ ```
+ 
+ 
+ Homework 3 - Part 2 - D
+ - Define a function that users can use to send blue coins to each other.
+ ```sol
+
+mapping (address => bool) members;
+   constructor() public Ownable() {
+   }
+   function addMember(address _member)
+       public
+       onlyOwner
+   {
+       members[_member] = true;
+   }
+   
+   function isMember(address _member) public view returns(bool);
+function addMember(address _member) public onlyOwner;
+function removeMember(address _member) public onlyOwner;
+
+Whitelist whitelist;
+ 
+   constructor(address _whitelistAddress) public {
+       whitelist = Whitelist(_whitelistAddress);
+   }
+ 
+   function transfer(address account, uint256 amount) public {
+       require(whitelist.isMember(account), "Account not whitelisted.");
+       super._transfer(account, amount);
+   }
+   }
+   
+   
+   Homework 3 - Part 2 - E
+   - What is a modifier and what is its use?
+   Used to modify the behaviour of a function. The modifiers can be used when there is a need to verify the condition automatically before executing a particular function. It can be executed before or after the function executes its code.
+   
+   
+
