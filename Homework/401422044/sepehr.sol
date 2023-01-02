@@ -15,6 +15,12 @@ contract Sepehr{
     // used to store wallets
     mapping(address => ColoredWallet) public addressToWallet ;
 
+    modifier checkBlueCoin(address _address){
+        ColoredWallet memory temp = addressToWallet[_address];
+        require(temp.numberOfBlueCoins > 0,"not enough blue coins");
+        _;
+    }
+
     // this method will create wallet for owner
     function createColoredWallet() public  {
         ownerWallet = ColoredWallet(0,200);
@@ -29,7 +35,7 @@ contract Sepehr{
     }
 
     // remove blue coins
-    function removeBlueCoin() public {
+    function removeBlueCoin() public  {
         if(ownerWallet.numberOfBlueCoins > 0){
             ownerWallet.numberOfRedCoins = ownerWallet.numberOfRedCoins + 2;
             ownerWallet.numberOfBlueCoins = ownerWallet.numberOfBlueCoins - 1;
@@ -38,9 +44,8 @@ contract Sepehr{
     }
 
     // remove blue coins for others(implemented with require instead of if)
-    function removeBlueCoinForOthers(address _address) public {
+    function removeBlueCoinForOthers(address _address) public checkBlueCoin(_address){
         ColoredWallet memory temp = addressToWallet[_address];
-        require(temp.numberOfBlueCoins > 0,"not enough blue coins");
         temp.numberOfRedCoins = temp.numberOfRedCoins + 2;
         temp.numberOfBlueCoins = temp.numberOfBlueCoins - 1;
         addressToWallet[_address] = temp ;
