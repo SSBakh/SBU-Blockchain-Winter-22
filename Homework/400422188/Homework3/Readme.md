@@ -1,3 +1,4 @@
+PURE:
 In Solidity, a function that doesn’t read or modify the variables of the state is called a
  pure function. It can only use local variables that are declared in the function and the
  arguments that are passed to
@@ -34,7 +35,7 @@ Output:
 
 
 -------------------------------------------------------------
-
+Modifier:
 In Solidity, Modifiers express what actions are occurring in 
 a declarative and readable manner. They are similar to the decorator 
 pattern used in Object Oriented Programming.
@@ -51,3 +52,11 @@ modifier onlyOwner {
     require(msg.sender == owner);
     _;
 }
+------------------------------------------------------------
+In coding:
+part 1:creating a smart contract
+making a struct with 2 values
+part 2:
+function for burn and transfer
+part 3:
+send and recieve blue coins to eachother
