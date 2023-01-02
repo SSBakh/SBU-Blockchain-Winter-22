@@ -22,6 +22,11 @@ View function declares that no state will be changed.Pure function declares that
 [Pure function and View function examples](https://github.com/mohammadranjbarz/SBU-Blockchain-Winter-22/blob/401422090/Homework/401422090/homework3/pureFunctionExample.sol)
 
 ## Question 2
+
+### Bonus question (What is modifier functions)
+Function Modifiers are used to modify the behaviour of a function. For example to add a prerequisite to a function. it's like
+middlewares in Node.js (Express) language
+
 ### Smart contract code
 [Smart contract code](https://github.com/mohammadranjbarz/SBU-Blockchain-Winter-22/blob/401422090/Homework/401422090/homework3/ColoredWallet.sol)
 
