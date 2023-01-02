@@ -1,11 +1,13 @@
 # Homework 3
-This is a read me file for homework 3.
+
+This is a short description of what I've done + answers to questions.
 
 ## Part I
 
 **Question:**
 
 What is the difference between *view* and *pure* keywords when it comes to functions' behaviour in Solidity?
+
 - One can declare a function as *view* in cases when they promise not to modify any state variables. They can view the state variables but can't modify them.
 
 - One can declare a function as *pure* in cases when they promise neither to modify nor to read any state variables.
