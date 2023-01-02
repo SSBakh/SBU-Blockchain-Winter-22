@@ -11,7 +11,7 @@ Simple solidity programs that 1. Show an example of pure/view functions and 2. r
 Pure functions are functions that are not accessing any state variables. They can only use local variables that are declared in the function and the arguments.
 The view function declares that no state will be changed however Pure function declares that no state variable will be changed or read. 
 
-Example: pure.sol
+Example: Pure.sol
 
 
 ## Smart contract
