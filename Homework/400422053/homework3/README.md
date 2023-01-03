@@ -2,7 +2,7 @@
 
 ## questionOne.sol 
 
-You can see an explaination about pure and view functions 
+You can see an explanation about pure and view functions 
 ## questionTwo.sol 
 This is a smart contract.
 
