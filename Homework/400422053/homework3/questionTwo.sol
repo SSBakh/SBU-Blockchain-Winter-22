@@ -3,6 +3,8 @@
 pragma solidity ^0.8.0;
 
 contract MainContract {
+
+    //Question 2 - A
     struct ColoredWallet {
         uint256 numberOfRedCoins;
         uint256 numberOfBlueCoins;
@@ -12,7 +14,7 @@ contract MainContract {
 
     mapping(address => ColoredWallet) public ownerToColoredWallet;
 
-    //Question 2 - A
+    //Question 2 - B
     function createColoredWallet () public {
 
         // Check if the wallet already exists 
@@ -21,7 +23,7 @@ contract MainContract {
         ownerToColoredWallet[msg.sender] = newColoredWallet;
     }
 
-    //Question 2 - B
+    //Question 2 - C
     function getRedCoins () public {
         // Check if the wallet exists 
         require(ownerToColoredWallet[msg.sender].active , "You don not have any active wallet!");
@@ -40,7 +42,7 @@ contract MainContract {
     }
 
 
-    //Question 2 - C    
+    //Question 2 - D    
     function sendBlueCoin(address _toWalletAddress, uint256 _numberOfBlueCoins) public{
         // Check if the wallet both sender and receiver wallets exist   
         require(ownerToColoredWallet[msg.sender].active , "You don not have any active wallet!");
