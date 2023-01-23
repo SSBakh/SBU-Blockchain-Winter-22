@@ -1,0 +1,73 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract strangeWallet {
+//2-alef
+    struct ColoredWallet {
+
+        uint256 numberOfBlueCoins ;
+        uint256 numberOfRedCoins ;
+    }                                   
+   
+    
+
+
+    struct Person {
+        string username;
+        address personAddress;
+        ColoredWallet personColoredWallet;
+    }
+
+
+
+    Person[] public personArray;
+
+    mapping(string => Person) public userNameToPerson;
+    mapping(address => bool) exsit;
+
+    
+
+
+//2-b
+    ColoredWallet Wallet= ColoredWallet(100,0);  
+
+    function createPersonAndWallet(string memory _username) public {
+        Person memory newPerson = Person(_username,msg.sender,Wallet);
+        userNameToPerson[newPerson.username] = newPerson ;
+        exsit[msg.sender]=true;
+    }
+
+//2-p
+    function burnAndGet(string memory _username) public{
+        bool c1 = userNameToPerson[_username].personColoredWallet.numberOfBlueCoins > 0;
+        require(c1,"End of charge!");
+        Person memory person = userNameToPerson[_username];
+
+
+        person.personColoredWallet.numberOfBlueCoins -=1;
+        person.personColoredWallet.numberOfRedCoins +=2;
+
+    }
+
+//2-t
+    function send(string memory _sender, string memory _receiver, uint256 _amount) public{
+
+        bool c1=userNameToPerson[_sender].personAddress == msg.sender ;
+        require(c1,"You're not allowed!");
+        bool c2 = userNameToPerson[_sender].personColoredWallet.numberOfBlueCoins > 0;
+        require(c2,"End of charge!");
+        bool c3=exsit[userNameToPerson[_receiver].personAddress];
+        require(c3,"recieiver not found!");
+
+        userNameToPerson[_sender].personColoredWallet.numberOfBlueCoins-=_amount;
+
+        userNameToPerson[_receiver].personColoredWallet.numberOfBlueCoins+=_amount;
+
+
+
+
+    }
+
+
+}
